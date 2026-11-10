@@ -1,6 +1,12 @@
 // import { StrictMode } from 'react'
 import { createRoot } from "react-dom/client";
 import "./index.css";
-// import App from './App.tsx'
+import App from "./App.tsx";
 
-createRoot(document.getElementById("root")!).render(<h1>This is the title</h1>);
+const root = document.getElementById("root");
+
+if (root) {
+  createRoot(root).render(<App />);
+} else {
+  throw Error("no books where found");
+}
