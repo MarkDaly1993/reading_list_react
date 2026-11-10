@@ -1,15 +1,18 @@
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import BookText from "./components/BookText";
+
 function App() {
   return (
     <>
       <div className="page">
-        <header>
-          <h1>My Reading List</h1>
-          <p>These are books that I have</p>
-        </header>
-        <main></main>
-        <footer>
-          <p>I hope you enjoyed my reading list</p>
-        </footer>
+        <Header />
+        <main>
+          <div className="book-info">
+            <BookText />
+          </div>
+        </main>
+        <Footer />
       </div>
     </>
   );
