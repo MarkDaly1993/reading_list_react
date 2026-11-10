@@ -5,15 +5,16 @@ export interface BookCardProps {
     author: string;
     genre: string;
     isRead: boolean;
+    pages?: number
 }
 
-function BookCard({ title, author, genre, isRead }: BookCardProps) {
+function BookCard({ title, author, genre, isRead, pages }: BookCardProps) {
 
 
     return (<li className="book-card">
         <div className="book-info">
             {isRead ? <span className="badge">Read</span> : null}
-            <BookText title={title} author={author} genre={genre} />
+            <BookText title={title} author={author} genre={genre} pages={pages} />
         </div>
         <div className="book-action">
             <button aria-label={isRead ? `Mark unread ${title}` : `Mark read ${title}`}

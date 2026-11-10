@@ -20,6 +20,7 @@ function BookList({ books }: BookListProp) {
               author={favouriteBook.author}
               genre={favouriteBook.genre}
               isRead={favouriteBook.is_read}
+              pages={favouriteBook.pages}
             />
           );
         })
