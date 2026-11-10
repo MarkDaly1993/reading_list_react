@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import BookText from "./components/BookText";
+// import BookText from "./components/BookText";
+import BookCard from "./components/BookCard"
 
 function App() {
   return (
@@ -8,9 +9,9 @@ function App() {
       <div className="page">
         <Header />
         <main>
-          <div className="book-info">
-            <BookText />
-          </div>
+          <BookCard title="Dune" author="Frank Herbert" genre="sci-fi" isRead = {true}/>
+          <BookCard title="Piranesi" author="Susanna Clarke" genre="fantasy" isRead = {false}/>
+          <BookCard title="Never Let Me Go" author="Kazuo Ishiguro" genre="literary" isRead = {true}/>
         </main>
         <Footer />
       </div>
