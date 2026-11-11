@@ -7,27 +7,37 @@ import { BOOKS } from "./data/books";
 import ResultCount from "./components/ResultCount";
 // import Counter from "./scratch/Counter";
 // import CreateList from "./scratch/Shelf";
-import {useState } from "react"
-import type {Book} from "./types"
-import Booklist2 from "./components/BookCard copy"
-import BookCard2 from "./components/BookCard copy";
-
+import { useState } from "react";
+import type { Book } from "./types";
+import ReadCount from "./components/ReadCount";
 
 function App() {
+  const [books, setBooks] = useState<Book[]>(BOOKS);
+  const [readCount, setReadCount] = useState(6);
+  const [total, setTotal] = useState(12);
 
-const [books, setBooks] = useState<Book[]>(BOOKS);
+  function resetShelf() {
+    setBooks(BOOKS);
+    setTotal(books.length);
+  }
 
-function resetShelf(){
-  setBooks(BOOKS);
-}
+  function toggleRead(id: number) {
+    // setBooks(
+    const update = books.map((book) =>
+      book.id === id ? { ...book, is_read: !book.is_read } : { ...book },
+    );
+    setBooks(update);
+    setReadCount(update.filter((currBook) => currBook.is_read === true).length);
 
-function toggleRead(id: number){
-  return setBooks(books.map((book) => book.id === id ? {...book,is_read: !book.is_read} : {...book}));
-}
+    // );
+  }
 
-function deleteBook(id: number){
-  return setBooks(books.filter((currBook) => currBook.id !== id));
-}
+  function deleteBook(id: number) {
+    const update = books.filter((currBook) => currBook.id !== id);
+    setBooks(update);
+    setTotal(update.length);
+    setReadCount(update.filter((currBook) => currBook.is_read === true).length);
+  }
 
   return (
     <>
@@ -35,7 +45,13 @@ function deleteBook(id: number){
         <Header />
         <main>
           <ResultCount count={books.length} />
-          <BookList books={books} onToggleRead={toggleRead} onDeleteBook={deleteBook} onReset={resetShelf}/>
+          <BookList
+            books={books}
+            onToggleRead={toggleRead}
+            onDeleteBook={deleteBook}
+            onReset={resetShelf}
+          />
+          <ReadCount readCount={readCount} total={total} />
         </main>
         <Footer />
       </div>
