@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import BookList from "./components/BookList";
 import { BOOKS } from "./data/books";
 import ResultCount from "./components/ResultCount";
+import Counter from "./scratch/Counter";
+import CreateList from "./scratch/Shelf";
 
 const books = BOOKS;
 
@@ -16,6 +18,8 @@ function App() {
         <main>
           <ResultCount count={books.length} />
           <BookList books={books} />
+          <Counter />
+          <CreateList />
         </main>
         <Footer />
       </div>
