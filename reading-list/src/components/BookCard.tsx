@@ -1,14 +1,17 @@
 import BookText from "./BookText";
 
 export interface BookCardProps {
+    id: number
     title: string;
     author: string;
     genre: string;
     isRead: boolean;
-    pages?: number
+    pages?: number;
+    toggleRead: (id: number) => void;
+    deleteBook: (id: number) => void
 }
 
-function BookCard({ title, author, genre, isRead, pages }: BookCardProps) {
+function BookCard({id ,title, author, genre, isRead, pages, toggleRead, deleteBook }: BookCardProps) {
 
 
     return (<li className="book-card">
@@ -18,9 +21,9 @@ function BookCard({ title, author, genre, isRead, pages }: BookCardProps) {
         </div>
         <div className="book-action">
             <button aria-label={isRead ? `Mark unread ${title}` : `Mark read ${title}`}
-                id="read-button" type="button">{isRead ? "Mark unread" : "Mark read"}</button>
+                id="read-button" onClick={() => {toggleRead(id)}} type="button">{isRead ? "Mark unread" : "Mark read"}</button>
 
-            <button aria-label={`Delete ${title}`} id="Delete" type="button">Delete</button>
+            <button onClick={() => deleteBook(id)} aria-label={`Delete ${title}`} id="Delete" type="button">Delete</button>
         </div>
     </li>);
 }

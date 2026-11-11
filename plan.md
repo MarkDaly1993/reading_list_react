@@ -1,11 +1,11 @@
-App
+App -> holds book state
 ├── Header string
 ├ ├── h2
 ├ ├── p
 ├
-├── List of Books // <--- access to BOOKS data from data/books.ts
+├── List of Books // <--- access to BOOKS data from data/books.ts // Handlers passed down from App to List of Books which passes it to BookCard
 ├──ul
-├── BookCard <---- access to individual books -> interface Book
+├── BookCard <---- access to individual books -> interface Book // Is given Handler from List of Books
 ├── id
 ------------------------
 ├── <h2> title
